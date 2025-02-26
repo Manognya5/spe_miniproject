@@ -53,6 +53,7 @@ public class CalculatorTest {
             System.out.println(e);
         }
     }
+
     // test cases for log
     @Test
     public void testlogOne() {
@@ -75,4 +76,25 @@ public class CalculatorTest {
         }
     }
     
+    // test cases for power
+    @Test
+    public void testPowerWholetoWhole() {
+        double result = Power(5, 3);
+        Assert.assertEquals(125, result, 0.0001);
+    }
+    @Test
+    public void testPowerWholetoFraction() {
+        double result = Power(625, 0.5);
+        Assert.assertEquals(25, result, 0.0001);
+    }
+
+    @Test
+    public void testPowerNegativetoFraction() {
+        try {
+            Power(-5, 0.5);
+            Assert.fail("Expected IllegalArgumentException");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+        }
+    }
 }
