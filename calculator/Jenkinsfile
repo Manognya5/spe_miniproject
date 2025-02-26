@@ -29,9 +29,11 @@ pipeline{
 
         stage("Stage 4 : Push Docker Image to Dockerhub"){
             steps{
-                docker.withRegistry('', 'DockerHubCred') {
-                sh 'docker tag calculator manognya5/calculator:latest'
-                sh 'docker push manognya5/calculator'
+                script {
+                    docker.withRegistry('', 'DockerHubCred') {
+                    sh 'docker tag calculator manognya5/calculator:latest'
+                    sh 'docker push manognya5/calculator'
+                }
             }
             }
         }
