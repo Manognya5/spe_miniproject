@@ -1,0 +1,56 @@
+pipeline{
+    agent any
+    environment {
+        DOCKER_IMAGE_NAME = 'calculator'
+        GITHUB_REPO_URL = 'https://github.com/Manognya5/spe_miniproject.git'
+    }
+    stages{
+        stage("Stage 1 : Git Clone"){
+            steps{
+                script {
+                    git branch: 'main', url: "${GITHUB_REPO_URL}"
+                }
+            }
+        }
+
+        stage("Stage 2 : Maven Build"){
+            steps{
+                sh 'mvn clean install'
+            }
+        }
+
+        stage("Stage 3 : Build Docker Image"){
+            steps{
+               script {
+                    docker.build("${DOCKER_IMAGE_NAME}", '.')
+                }
+            }
+        }
+
+        stage("Stage 4 : Push Docker Image to Dockerhub"){
+            steps{
+                docker.withRegistry('', 'DockerHubCred') {
+                sh 'docker tag calculator manognya5/calculator:latest'
+                sh 'docker push manognya5/calculator'
+            }
+        }
+
+        // stage("Stage 5 : Clean Unwanted Docker Images"){
+        //     steps{
+        //         sh "/usr/local/bin/docker container prune -f"
+        //         sh "/usr/local/bin/docker image prune -a -f"
+        //     }
+        // }
+
+        stage('Stage 5 : Ansible Deployment') {
+            steps {
+                script {
+                    ansiblePlaybook(
+                    playbook: 'deploy.yml',
+                    inventory: 'inventory.ini'
+                    )
+                }
+             }
+        }
+    }
+}
