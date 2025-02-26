@@ -39,11 +39,14 @@ public class Calculator {
 
     public static double Power(double base, double exponent) {
         double res = -1;
-        try {
-            res = Math.pow(base, exponent);
-        }catch (Exception e) {
-            throw new IllegalArgumentException(e);
+        if (Math.abs(exponent) < 1 && Math.abs(exponent) > 0 && base < 0) {
+            throw new IllegalArgumentException("Undefined");
         }
-        return res;
+        else {        
+
+            res = Math.pow(base, exponent);
+            System.out.println(res);
+            return res;
+        }
     }
 }
