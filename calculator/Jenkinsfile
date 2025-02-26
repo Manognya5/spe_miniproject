@@ -15,8 +15,12 @@ pipeline{
 
         stage("Stage 2 : Maven Build"){
             steps{
-                sh 'cd calculator'
-                sh 'mvn clean install'
+                sh 'mvn -f calculator/pom.xml clean package'
+            }
+        }
+        stage("Stage 3 : Maven Test"){
+            steps{
+                sh 'mvn -f calculator/pom.xml clean test'
             }
         }
 
