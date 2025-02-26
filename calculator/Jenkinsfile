@@ -15,6 +15,7 @@ pipeline{
 
         stage("Stage 2 : Maven Build"){
             steps{
+                sh 'cd calculator'
                 sh 'mvn clean install'
             }
         }
