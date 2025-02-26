@@ -33,6 +33,7 @@ pipeline{
                 sh 'docker tag calculator manognya5/calculator:latest'
                 sh 'docker push manognya5/calculator'
             }
+            }
         }
 
         // stage("Stage 5 : Clean Unwanted Docker Images"){
@@ -54,3 +55,4 @@ pipeline{
         }
     }
 }
+
