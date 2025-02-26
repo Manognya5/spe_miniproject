@@ -9,7 +9,10 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         int choice, flag = 0;
 
-        System.out.println("------------Scientific Calculator--------------");
+        System.out.println("*****************************************");
+        System.out.println("**********Scientific Calculator**********");
+        System.out.println("*****************************************");
+
         while (flag == 0) {
             System.out.println("Choose an option from the menu:");
             System.out.println("1. Square Root");
