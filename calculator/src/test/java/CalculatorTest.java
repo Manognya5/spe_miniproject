@@ -53,6 +53,26 @@ public class CalculatorTest {
             System.out.println(e);
         }
     }
+    // test cases for log
+    @Test
+    public void testlogOne() {
+        double result = NaturalLog(1);
+        Assert.assertEquals(0, result, 0.0001);
+    }
+    @Test
+    public void testlogE() {
+        double result = NaturalLog(Math.E);
+        Assert.assertEquals(1, result, 0.0001);
+    }
 
+    @Test
+    public void testlogNegative() {
+        try {
+            NaturalLog(-5);
+            Assert.fail("Expected IllegalArgumentException");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+        }
+    }
     
 }
