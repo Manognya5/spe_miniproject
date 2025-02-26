@@ -24,7 +24,7 @@ pipeline{
             }
         }
 
-        stage("Stage 3 : Build Docker Image"){
+        stage("Stage 4 : Build Docker Image"){
             steps{
                script {
                     docker.build("${DOCKER_IMAGE_NAME}", '.')
@@ -32,7 +32,7 @@ pipeline{
             }
         }
 
-        stage("Stage 4 : Push Docker Image to Dockerhub"){
+        stage("Stage 5 : Push Docker Image to Dockerhub"){
             steps{
                 script {
                     docker.withRegistry('', 'DockerHubCred') {
@@ -43,7 +43,7 @@ pipeline{
             }
         }
 
-        stage('Stage 5 : Ansible Deployment') {
+        stage('Stage 6 : Ansible Deployment') {
             steps {
                 script {
                     ansiblePlaybook(
