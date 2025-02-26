@@ -33,5 +33,26 @@ public class CalculatorTest {
 
     // testcases for factorial
     
+    @Test
+    public void testFactorialWholenumber() {
+        double result = Factorial(5);
+        Assert.assertEquals(120, result, 0.0001);
+    }
+    @Test
+    public void testFactorialRootZero() {
+        double result = Factorial(0);
+        Assert.assertEquals(1, result, 0.0001);
+    }
+
+    @Test
+    public void testFactorialNegative() {
+        try {
+            Factorial(-5);
+            Assert.fail("Expected IllegalArgumentException");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e);
+        }
+    }
+
     
 }
