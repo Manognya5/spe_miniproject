@@ -20,7 +20,7 @@ pipeline{
         }
         stage("Stage 3 : Maven Test"){
             steps{
-                sh 'mvn -f calculator/pom.xml clean test'
+                sh 'mvn -f calculator/pom.xml test'
             }
         }
 
