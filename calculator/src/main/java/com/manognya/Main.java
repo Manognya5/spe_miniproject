@@ -17,7 +17,7 @@ public class Main {
             System.out.println("3. Natural Logarithm - base e");
             System.out.println("4. Power function");
             System.out.println("5. Exit");
-            System.out.println("Enter your choice(number): ");
+            System.out.println("Enter your choice: ");
             choice = scan.nextInt();
 
             switch (choice) {
